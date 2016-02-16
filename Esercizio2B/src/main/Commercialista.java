@@ -1,6 +1,5 @@
 package main;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,13 +10,16 @@ import java.util.HashMap;
 public class Commercialista {
 	
 	public ArrayList<Cliente> clienti = new ArrayList<>();
+	public HashMap<String, Integer> parc = new HashMap<>();
 	
 	public Commercialista() {
 		clienti = null;
+		parc = null;
 	}
 	
-	public Commercialista(ArrayList<Cliente> clienti) {
+	public Commercialista(ArrayList<Cliente> clienti, HashMap<String, Integer> parc) {
 		this.clienti = clienti;
+		this.parc = parc;
 		
 	}
 
@@ -44,6 +46,7 @@ public class Commercialista {
 	public void addCliente(Cliente d) {
 		// TODO: da implementare
 		
+		
 	}
 	
 	
@@ -54,6 +57,17 @@ public class Commercialista {
 	 */
 	public int clientiDuplicati() {
 		// TODO: da implementare
+		Integer cont = 0;
+		
+		for(Cliente c: clienti) {
+			if(parc.containsKey(c.getCF())) {
+				parc.put(c.getCF(), cont + 1);
+			} else {
+				parc.put(c.getCF(), 1);
+			}
+			
+			return cont;
+		}
 	}
 	
 	/**
